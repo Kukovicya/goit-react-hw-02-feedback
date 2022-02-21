@@ -3,7 +3,7 @@ import { Component } from 'react';
 import Statistics from './Statistics';
 import FeedbackOptions from './FeedbackOptions';
 import Notification from './Notification';
-
+import Section from './Section/Section';
 
 
 class Feedback extends Component {
@@ -43,12 +43,14 @@ class Feedback extends Component {
       
     return (
       <>
+        <Section title='Оставьте ваш отзыв'>
         <FeedbackOptions options={this.state} onLeaveFeedback={this.addAttribute}/>
-
+        </Section>
+        <Section title ='Статистика'>
       {countTotalFeedback() ? 
       <Statistics good={good} neutral={neutral} bad={bad} total={countTotalFeedback()} positivePercentage={countPositiveFeedbackPercentage()} />
       : <Notification message="There is no feedback"/>}
-        
+       </Section> 
       </>
     );
   }
